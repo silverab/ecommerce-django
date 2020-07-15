@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Products
+{% endblock title %}
+{% block content %}
+	<div class="row">
+		{% for product in products %}
+		<div class="col-sm-3">
+			{% for item in product.productimage_set.all %}
+				{% if item.featured %}
+				<img src="{{ item.image.url }}" height="60px" width="60px">
+				{% endif %}
+			
+			{% endfor %}
+				{{product.id}}
+				{{product.title}}
+				{{product.price}}
+			</div>
+	{% cycle "" "" "" "</div><br><hr><div class='row'>" %}
+		{% endfor %}
+	</div>
+{% endblock content %}
